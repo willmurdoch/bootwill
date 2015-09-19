@@ -1,0 +1,92 @@
+$fullWidth: 1200px;
+@mixin navBar($nh){
+	width:100%;
+	display:block;
+	top:0;
+	left:0;
+	height:$nh;
+	$navHeight:$nh !global; 
+	position:absolute;
+}
+@mixin tileWrap(){
+	width:99.5%;
+	margin:$navHeight auto 0;
+	display:inline-block;
+	padding:0.25%;
+}
+@mixin wmSizer($tWidth, $tMargin){
+	@if($tMargin == 0){
+		width:$tWidth;
+	}
+	@else{
+		$tMarginSides: 2*$tMargin;
+		width:calc(#{$tWidth} - #{$tMarginSides});
+		margin: $tMargin; 
+	}
+	display:block;
+	float:left;
+}
+body{ 
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+header{
+	@include navBar(100px);
+	background:black;
+	
+	nav{
+		text-align:left;
+		display:inline-block;
+		width:95%;
+		max-width:$fullWidth;
+		color:#FFF;
+	}
+}
+.wrapper{
+	@include tileWrap();
+	max-width:$fullWidth;
+}
+.bw{
+	background:red;
+}
+.bw20{
+	@include wmSizer(20%, 0.5%); 
+	padding-bottom:20%;
+}
+.bw25{
+	@include wmSizer(25%, 0.5%); 
+	padding-bottom:25%;
+}
+.bw50{
+	@include wmSizer(50%, 0.5%); 
+	padding-bottom: 25%;
+}
+.bw75{
+	@include wmSizer(75%, 0.5%); 
+	padding-bottom:25%;
+}
+.bw100{
+	@include wmSizer(100%, 0.5%); 
+	padding-bottom:25%;
+}
+footer{
+	@include wmSizer(100%, 0);
+	background:black;
+	position:relative;
+	height:200px;
+}
+
+@media (max-width:1000px){
+		.wrapper{
+			float:left;
+		}
+		.bw20,.bw25{
+			@include wmSizer(50%, 0.5%); 
+			padding-bottom:50%;
+		}	
+		.bw75,.bw50,.bw100{
+			@include wmSizer(100%, 0.5%); 
+			padding-bottom:50%;
+		}
+}
