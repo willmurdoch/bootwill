@@ -26,37 +26,47 @@ header {
   max-width: 1200px; }
 
 .bw {
-  background: red;
-  display: block;
-  float: left; }
+  background: red; }
 
 .bw20 {
   width: 19%;
   margin: 0.5%;
+  display: block;
+  float: left;
   padding-bottom: 20%; }
 
 .bw25 {
   width: 24%;
   margin: 0.5%;
+  display: block;
+  float: left;
   padding-bottom: 25%; }
 
 .bw50 {
   width: 49%;
   margin: 0.5%;
+  display: block;
+  float: left;
   padding-bottom: 25%; }
 
 .bw75 {
   width: 74%;
   margin: 0.5%;
+  display: block;
+  float: left;
   padding-bottom: 25%; }
 
 .bw100 {
   width: 99%;
   margin: 0.5%;
+  display: block;
+  float: left;
   padding-bottom: 25%; }
 
 footer {
   width: 100%;
+  display: block;
+  float: left;
   background: black;
   position: relative;
   height: 200px; }
@@ -68,15 +78,21 @@ footer {
   .bw20, .bw25 {
     width: 49%;
     margin: 0.5%;
+    display: block;
+    float: left;
     padding-bottom: 50%; }
 
   .bw75, .bw50, .bw100 {
     width: 99%;
     margin: 0.5%;
+    display: block;
+    float: left;
     padding-bottom: 50%; } }
 @media (max-width: 600px) {
   .bw20, .bw25 {
     width: 99%;
-    margin: 0.5%; } }
+    margin: 0.5%;
+    display: block;
+    float: left; } }
 
 /*# sourceMappingURL=bootwill.css.map */

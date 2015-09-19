@@ -24,6 +24,8 @@ $fullWidth: 1200px;
 		width:$tSize;
 		margin: $tMargin; 
 	}
+	display:block;
+	float:left;
 }
 body{ 
 	margin:0;
@@ -48,8 +50,6 @@ header{
 }
 .bw{
 	background:red;
-	display:block;
-	float:left;
 }
 .bw20{
 	@include wmSizer(20%, 0.5%); 
