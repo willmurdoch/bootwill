@@ -29,35 +29,35 @@ header {
   background: red; }
 
 .bw20 {
-  width: calc(20% - 1%);
+  width: 19%;
   margin: 0.5%;
   display: block;
   float: left;
   padding-bottom: 20%; }
 
 .bw25 {
-  width: calc(25% - 1%);
+  width: 24%;
   margin: 0.5%;
   display: block;
   float: left;
   padding-bottom: 25%; }
 
 .bw50 {
-  width: calc(50% - 1%);
+  width: 49%;
   margin: 0.5%;
   display: block;
   float: left;
   padding-bottom: 25%; }
 
 .bw75 {
-  width: calc(75% - 1%);
+  width: 74%;
   margin: 0.5%;
   display: block;
   float: left;
   padding-bottom: 25%; }
 
 .bw100 {
-  width: calc(100% - 1%);
+  width: 99%;
   margin: 0.5%;
   display: block;
   float: left;
@@ -76,17 +76,23 @@ footer {
     float: left; }
 
   .bw20, .bw25 {
-    width: calc(50% - 1%);
+    width: 49%;
     margin: 0.5%;
     display: block;
     float: left;
     padding-bottom: 50%; }
 
   .bw75, .bw50, .bw100 {
-    width: calc(100% - 1%);
+    width: 99%;
     margin: 0.5%;
     display: block;
     float: left;
     padding-bottom: 50%; } }
+@media (max-width: 600px) {
+  .bw20, .bw25 {
+    width: 99%;
+    margin: 0.5%;
+    display: block;
+    float: left; } }
 
 /*# sourceMappingURL=bootwill.css.map */

@@ -20,7 +20,8 @@ $fullWidth: 1200px;
 	}
 	@else{
 		$tMarginSides: 2*$tMargin;
-		width:calc(#{$tWidth} - #{$tMarginSides});
+		$tSize: $tWidth - $tMarginSides;
+		width:$tSize;
 		margin: $tMargin; 
 	}
 	display:block;
@@ -89,4 +90,10 @@ footer{
 			@include wmSizer(100%, 0.5%); 
 			padding-bottom:50%;
 		}
+}
+
+@media (max-width:600px){
+	.bw20,.bw25{
+		@include wmSizer(100%, 0.5%); 
+	}
 }
