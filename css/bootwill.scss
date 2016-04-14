@@ -1,99 +1,76 @@
-$fullWidth: 1200px;
-@mixin navBar($nh){
-	width:100%;
-	display:block;
-	top:0;
-	left:0;
-	height:$nh;
-	$navHeight:$nh !global; 
-	position:absolute;
+/*Define your sizes and margin here*/
+$sizes: (20) (25) (34) (50) (66) (75) (100);
+
+/*Margin between items, should be under half of your smallest size*/
+$margin: 0.5;
+
+/*Defines Breakpoints*/
+$tablet: 1024px;
+$smartphone: 600px;
+
+/*Standard sizes for breakpoints*/
+@mixin fullWidth(){
+	width:#{100 - $margin*2}%;
+	margin:#{$margin}%;
 }
-@mixin tileWrap(){
-	width:99.5%;
-	margin:$navHeight auto 0;
-	display:inline-block;
-	padding:0.25%;
+@mixin halfWidth(){
+	width:#{50 - $margin*2}%;
+	margin:#{$margin}%;
 }
-@mixin wmSizer($tWidth, $tMargin){
-	@if($tMargin == 0){
-		width:$tWidth;
+@mixin quarterWidth(){
+	width:#{25 - $margin*2}%;
+	margin:#{$margin}%;
+}
+
+/*Generates all width assignments*/
+@each $size, $i in $sizes{
+	.bw#{$size}{
+		width:#{$size - $margin*2}%;
+		margin:#{$margin}%;
 	}
-	@else{
-		$tMarginSides: 2*$tMargin;
-		$tSize: $tWidth - $tMarginSides;
-		width:$tSize;
-		margin: $tMargin; 
-	}
-	display:block;
-	float:left;
 }
-body{ 
+
+/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
+@media (max-width:$tablet){
+	@each $size, $i in $sizes{
+		@if($size < 20){
+			.bw#{$size}{@include quarterWidth();}
+		}
+		@else if($size < 50){
+			.bw#{$size}{@include halfWidth();}
+		}
+		@else{
+			.bw#{$size}{@include fullWidth();}
+		}
+	}
+}
+
+/*Generate query for mobile - all sizes take up the full screen width.*/
+@media (max-width:$smartphone){
+	@each $size, $i in $sizes{
+		@if($size < 20){
+			.bw#{$size}{@include halfWidth();}
+		}
+		@else{
+			.bw#{$size}{@include fullWidth();}
+		}
+	}
+}
+
+/*Your own styles*/
+body{
 	margin:0;
 	padding:0;
 	text-align:center;
 }
-header{
-	@include navBar(100px);
-	background:black;
-	
-	nav{
-		text-align:left;
-		display:inline-block;
-		width:95%;
-		max-width:$fullWidth;
-		color:#FFF;
-	}
-}
 .wrapper{
-	@include tileWrap();
-	max-width:$fullWidth;
+	display:block;
+	margin:0 auto;
+	width:100%;
 }
 .bw{
+	display:block;
+	float:left;
 	background:red;
-}
-.bw20{
-	@include wmSizer(20%, 0.5%); 
-	padding-bottom:20%;
-}
-.bw25{
-	@include wmSizer(25%, 0.5%); 
-	padding-bottom:25%;
-}
-.bw50{
-	@include wmSizer(50%, 0.5%); 
-	padding-bottom: 25%;
-}
-.bw75{
-	@include wmSizer(75%, 0.5%); 
-	padding-bottom:25%;
-}
-.bw100{
-	@include wmSizer(100%, 0.5%); 
-	padding-bottom:25%;
-}
-footer{
-	@include wmSizer(100%, 0);
-	background:black;
-	position:relative;
-	height:200px;
-}
-
-@media (max-width:1000px){
-		.wrapper{
-			float:left;
-		}
-		.bw20,.bw25{
-			@include wmSizer(50%, 0.5%); 
-			padding-bottom:50%;
-		}	
-		.bw75,.bw50,.bw100{
-			@include wmSizer(100%, 0.5%); 
-			padding-bottom:50%;
-		}
-}
-
-@media (max-width:600px){
-	.bw20,.bw25{
-		@include wmSizer(100%, 0.5%); 
-	}
+	height:250px;
 }
