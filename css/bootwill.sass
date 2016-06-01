@@ -14,6 +14,11 @@ $smartphone: 720px
 	font-family: Rockwell, Georgia, serif
 	margin: 0
 
+h1,h2,h3,h4,h5
+	line-height: 1em
+p
+	line-height: 1.5em
+
 /*----------Navigation------------*/
 
 
@@ -24,7 +29,6 @@ header
 	float: left
 	color: #FFF
 	background: #2b2b2b
-
 	.scaler
 		display: table
 		height: 80vh
@@ -36,7 +40,6 @@ header
 		text-align: left
 		max-width: 500px
 		width: 95%
-		
 		h1
 			+mainFont(2rem)
 		p
@@ -72,7 +75,7 @@ $marginY: 5px
 /*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
 .bwWrap
 	display: table
-	width: calc(100% + (#{$marginX}*2))
+	width: calc(100% + #{$marginX}*2)
 	margin: #{$marginY} 0 #{$marginY} #{-$marginX}
 
 /*Standard sizes for breakpoints*/
@@ -92,7 +95,7 @@ $marginY: 5px
 @each $size, $i in $sizes
 	$sizeSelector: floor($size)
 	.bw#{$sizeSelector}
-		width: calc(#{$size}% - (#{$marginX*2}))
+		width: calc(#{$size}% - #{$marginX*2})
 		margin: #{$marginY} #{$marginX}
 
 /*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/

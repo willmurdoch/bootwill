@@ -4,7 +4,65 @@
 	src: url(fonts/RockwellStd-ExtraBold.woff);
 }
 
+h1, h2, h3, h4, h5 {
+	line-height: 1em;
+}
+
+p {
+	line-height: 1.5em;
+}
+
 /*----------Navigation------------*/
+nav {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 2;
+	background: #000;
+}
+
+nav .scaler {
+	padding: 0;
+	font-size: 1rem;
+	text-align: right;
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li:nth-child(-n + 4) {
+	float: left;
+}
+
+nav ul li:first-of-type a {
+	margin-left: 0;
+}
+
+nav ul li:last-of-type a {
+	margin-right: 0;
+}
+
+nav ul a {
+	display: inline-block;
+	vertical-align: middle;
+	color: #FFF;
+	text-decoration: none;
+	margin: 0 1rem;
+}
+
+nav ul a img {
+	display: block;
+}
+
 /*----------Header------------*/
 header {
 	width: 100%;
@@ -73,59 +131,59 @@ header .textWrap p {
 /*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
 .bwWrap {
 	display: table;
-	width: calc(100% + (5px*2));
+	width: calc(100% + 5px*2);
 	margin: 5px 0 5px -5px;
 }
 
 /*Standard sizes for breakpoints*/
 /*Generates all width assignments*/
 .bw16 {
-	width: calc(16% - (10px));
+	width: calc(16% - 10px);
 	margin: 5px 5px;
 }
 
 .bw17 {
-	width: calc(17% - (10px));
+	width: calc(17% - 10px);
 	margin: 5px 5px;
 }
 
 .bw20 {
-	width: calc(20% - (10px));
+	width: calc(20% - 10px);
 	margin: 5px 5px;
 }
 
 .bw25 {
-	width: calc(25% - (10px));
+	width: calc(25% - 10px);
 	margin: 5px 5px;
 }
 
 .bw50 {
-	width: calc(50% - (10px));
+	width: calc(50% - 10px);
 	margin: 5px 5px;
 }
 
 .bw33 {
-	width: calc(33.333% - (10px));
+	width: calc(33.333% - 10px);
 	margin: 5px 5px;
 }
 
 .bw66 {
-	width: calc(66.666% - (10px));
+	width: calc(66.666% - 10px);
 	margin: 5px 5px;
 }
 
 .bw67 {
-	width: calc(67% - (10px));
+	width: calc(67% - 10px);
 	margin: 5px 5px;
 }
 
 .bw75 {
-	width: calc(75% - (10px));
+	width: calc(75% - 10px);
 	margin: 5px 5px;
 }
 
 .bw100 {
-	width: calc(100% - (10px));
+	width: calc(100% - 10px);
 	margin: 5px 5px;
 }
 
