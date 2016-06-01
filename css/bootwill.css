@@ -1,112 +1,161 @@
+/*----------Navigation------------*/
+/*----------Header------------*/
+/*----------Grid------------*/
 /*Define your sizes and margin here*/
 /*Margin between items, should be under half of your smallest size*/
 /*Defines Breakpoints*/
+.bwWrap {
+	display: table;
+	width: calc(100% + (1px*2));
+	margin: 5px 0 5px -1px;
+}
+
 /*Standard sizes for breakpoints*/
 /*Generates all width assignments*/
+.bw16 {
+	width: calc(16% - (2px));
+	margin: 5px 1px;
+}
+
+.bw17 {
+	width: calc(17% - (2px));
+	margin: 5px 1px;
+}
+
 .bw20 {
-	width: 19%;
-	margin: 0.5%;
+	width: calc(20% - (2px));
+	margin: 5px 1px;
 }
 
 .bw25 {
-	width: 24%;
-	margin: 0.5%;
+	width: calc(25% - (2px));
+	margin: 5px 1px;
 }
 
 .bw34 {
-	width: 33%;
-	margin: 0.5%;
+	width: calc(34% - (2px));
+	margin: 5px 1px;
 }
 
 .bw50 {
-	width: 49%;
-	margin: 0.5%;
+	width: calc(50% - (2px));
+	margin: 5px 1px;
 }
 
 .bw66 {
-	width: 65%;
-	margin: 0.5%;
+	width: calc(66% - (2px));
+	margin: 5px 1px;
+}
+
+.bw67 {
+	width: calc(67% - (2px));
+	margin: 5px 1px;
 }
 
 .bw75 {
-	width: 74%;
-	margin: 0.5%;
+	width: calc(75% - (2px));
+	margin: 5px 1px;
 }
 
 .bw100 {
-	width: 99%;
-	margin: 0.5%;
+	width: calc(100% - (2px));
+	margin: 5px 1px;
 }
 
 /*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
 @media (max-width: 1024px) {
+	.bw16 {
+		width: calc(25% - 1px*2);
+		margin: 5px 1px;
+	}
+	.bw17 {
+		width: calc(25% - 1px*2);
+		margin: 5px 1px;
+	}
 	.bw20 {
-		width: 49%;
-		margin: 0.5%;
+		width: calc(50% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw25 {
-		width: 49%;
-		margin: 0.5%;
+		width: calc(50% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw34 {
-		width: 49%;
-		margin: 0.5%;
+		width: calc(50% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw50 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw66 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
+	}
+	.bw67 {
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw75 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw100 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 }
 
 /*Generate query for mobile - all sizes take up the full screen width.*/
 @media (max-width: 600px) {
+	.bw16 {
+		width: calc(50% - 1px*2);
+		margin: 5px 1px;
+	}
+	.bw17 {
+		width: calc(50% - 1px*2);
+		margin: 5px 1px;
+	}
 	.bw20 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw25 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw34 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw50 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw66 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
+	}
+	.bw67 {
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw75 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 	.bw100 {
-		width: 99%;
-		margin: 0.5%;
+		width: calc(100% - 1px*2);
+		margin: 5px 1px;
 	}
 }
 
-/*Your own styles*/
+/*----------Non-templated------------*/
 body {
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	background: #000;
 }
 
 .wrapper {
@@ -115,9 +164,16 @@ body {
 	width: 100%;
 }
 
+.scaler {
+	max-width: 1024px;
+	width: 95%;
+	margin: 0 auto;
+	display: table;
+}
+
 .bw {
 	display: block;
 	float: left;
-	background: red;
+	background: #FFF;
 	height: 250px;
 }

@@ -1,0 +1,89 @@
+/*----------Navigation------------*/
+
+
+/*----------Header------------*/
+
+
+/*----------Grid------------*/
+
+/*Define your sizes and margin here*/
+$sizes: (16) (17) (20) (25) (34) (50) (66) (67) (75) (100)
+
+/*Margin between items, should be under half of your smallest size*/
+$marginX: 1px
+$marginY: 5px
+
+/*Defines Breakpoints*/
+$tablet: 1024px
+$smartphone: 600px
+
+.bwWrap
+	display: table
+	width: calc(100% + (#{$marginX}*2))
+	margin: #{$marginY} 0 #{$marginY} #{-$marginX}
+
+/*Standard sizes for breakpoints*/
+=fullWidth()
+	width: calc(100% - #{$marginX}*2)
+	margin: #{$marginY} #{$marginX}
+
+=halfWidth()
+	width: calc(50% - #{$marginX}*2)
+	margin: #{$marginY} #{$marginX}
+
+=quarterWidth()
+	width: calc(25% - #{$marginX}*2)
+	margin: #{$marginY} #{$marginX}
+
+/*Generates all width assignments*/
+@each $size, $i in $sizes
+	.bw#{$size}
+		width: calc(#{$size}% - (#{$marginX*2}))
+		margin: #{$marginY} #{$marginX}
+
+/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
+@media (max-width:$tablet)
+	@each $size, $i in $sizes
+		@if($size < 20)
+			.bw#{$size}
+				+quarterWidth
+		@else if($size < 50)
+			.bw#{$size}
+				+halfWidth()
+		@else
+			.bw#{$size}
+				+fullWidth()
+
+/*Generate query for mobile - all sizes take up the full screen width.*/
+@media (max-width:$smartphone)
+	@each $size, $i in $sizes
+		@if($size < 20)
+			.bw#{$size}
+				+halfWidth()
+		@else
+			.bw#{$size}
+				+fullWidth
+
+/*----------Non-templated------------*/
+body
+	margin: 0
+	padding: 0
+	text-align: center
+	background: #000
+
+.wrapper
+	display: block
+	margin: 0 auto
+	width: 100%
+
+.scaler
+	max-width: 1024px
+	width: 95%
+	margin: 0 auto
+	display: table
+
+.bw
+	display: block
+	float: left
+	background: #FFF
+	height: 250px
