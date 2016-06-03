@@ -1,4 +1,5 @@
-//@import bootwill.sass
+@import bootwill.sass
+
 /*----------Globals------------*/
 @font-face
 	font-family: Rockwell
@@ -21,6 +22,7 @@ p
 	line-height: 1.5em
 
 /*----------Navigation------------*/
+//Choose how many items you want to float left before the nav splits
 $navSplit: 4
 nav
 	position: fixed
@@ -55,6 +57,8 @@ nav
 			color: #FFF
 			text-decoration: none
 			margin: 0 1rem
+			line-height: 1em
+
 			img
 				display: block
 
@@ -103,66 +107,11 @@ header
 		background: $brandColor1
 		color: $brandColor2
 
-/*----------Grid------------*/
-/*Define your sizes and margin here*/
-$sizes: (16) (17) (20) (25) (50) (33.333) (66.666) (67) (75) (100)
-
-/*Margin between items, should be under half of your smallest size*/
-$marginX: 5px
-$marginY: 5px
-
-/*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
+/*----------Generate the Grid------------*/
 .bwWrap
-	display: table
-	width: calc(100% + #{$marginX}*2)
-	margin: #{$marginY} 0 #{$marginY} #{-$marginX}
+	+buildGrid((10) (20) (25) (30) (40), 6px)
 
-/*Standard sizes for breakpoints*/
-=fullWidth()
-	width: calc(100% - #{$marginX}*2)
-	margin: #{$marginY} #{$marginX}
-
-=halfWidth()
-	width: calc(50% - #{$marginX}*2)
-	margin: #{$marginY} #{$marginX}
-
-=quarterWidth()
-	width: calc(25% - #{$marginX}*2)
-	margin: #{$marginY} #{$marginX}
-
-/*Generates all width assignments*/
-@each $size, $i in $sizes
-	$sizeSelector: floor($size)
-	.bw#{$sizeSelector}
-		width: calc(#{$size}% - #{$marginX*2})
-		margin: #{$marginY} #{$marginX}
-
-/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
-@media (max-width:$tablet)
-	@each $size, $i in $sizes
-		$sizeSelector: floor($size)
-		@if($sizeSelector < 20)
-			.bw#{$sizeSelector}
-				+quarterWidth
-		@else if($sizeSelector < 50)
-			.bw#{$size}
-				+halfWidth
-		@else
-			.bw#{$sizeSelector}
-				+fullWidth
-
-/*Generate query for mobile - all sizes take up the full screen width.*/
-@media (max-width:$smartphone)
-	@each $size, $i in $sizes
-		$sizeSelector: floor($size)
-		@if($size < 20)
-			.bw#{$sizeSelector}
-				+halfWidth
-		@else
-			.bw#{$sizeSelector}
-				+fullWidth
-
-
+/*----------Base Theming------------*/
 body
 	margin: 0
 	padding: 0
@@ -186,3 +135,28 @@ body
 	display: inline-block
 	background: #FFF
 	height: 250px
+.filterWrap
+	width: 100%
+	display: flex
+	display: -webkit-flex
+	flex-flow: row wrap
+	-webkit-flex-flow: row wrap
+	margin-bottom: 1rem
+	div[data-filter]
+		+mainFont(1rem)
+		color: #000
+		display: flex
+		display: -webkit-flex
+		flex: 1
+		-webkit-flex: 1
+		flex-direction: column
+		-webkit-flex-direction: column
+		justify-content: center
+		-webkit-justify-content: center
+		outline: 3px solid #000
+		height: 60px
+		background: #cecbcb
+		cursor: pointer
+.grid
+	.scaler
+		overflow:hidden

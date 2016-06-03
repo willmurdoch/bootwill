@@ -1,3 +1,5 @@
+/*----------Generates a Grid------------*/
+/*Generates all width assignments*/
 /*----------Globals------------*/
 @font-face {
 	font-family: Rockwell;
@@ -57,6 +59,7 @@ nav ul a {
 	color: #FFF;
 	text-decoration: none;
 	margin: 0 1rem;
+	line-height: 1em;
 }
 
 nav ul a img {
@@ -125,156 +128,88 @@ header .textWrap p {
 	color: #000;
 }
 
-/*----------Grid------------*/
-/*Define your sizes and margin here*/
-/*Margin between items, should be under half of your smallest size*/
-/*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
+/*----------Generate the Grid------------*/
 .bwWrap {
+	/*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
 	display: table;
-	width: calc(100% + 5px*2);
-	margin: 5px 0 5px -5px;
+	width: calc(100% + 6px*2);
+	margin-left: -6px;
+	/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
+	/*Generate query for mobile - all sizes take up the full screen width.*/
 }
 
-/*Standard sizes for breakpoints*/
-/*Generates all width assignments*/
-.bw16 {
-	width: calc(16% - 10px);
-	margin: 5px 5px;
+.bwWrap .bw10 {
+	width: calc(10% - 12px);
+	margin: 6px 6px;
 }
 
-.bw17 {
-	width: calc(17% - 10px);
-	margin: 5px 5px;
+.bwWrap .bw20 {
+	width: calc(20% - 12px);
+	margin: 6px 6px;
 }
 
-.bw20 {
-	width: calc(20% - 10px);
-	margin: 5px 5px;
+.bwWrap .bw25 {
+	width: calc(25% - 12px);
+	margin: 6px 6px;
 }
 
-.bw25 {
-	width: calc(25% - 10px);
-	margin: 5px 5px;
+.bwWrap .bw30 {
+	width: calc(30% - 12px);
+	margin: 6px 6px;
 }
 
-.bw50 {
-	width: calc(50% - 10px);
-	margin: 5px 5px;
+.bwWrap .bw40 {
+	width: calc(40% - 12px);
+	margin: 6px 6px;
 }
 
-.bw33 {
-	width: calc(33.333% - 10px);
-	margin: 5px 5px;
-}
-
-.bw66 {
-	width: calc(66.666% - 10px);
-	margin: 5px 5px;
-}
-
-.bw67 {
-	width: calc(67% - 10px);
-	margin: 5px 5px;
-}
-
-.bw75 {
-	width: calc(75% - 10px);
-	margin: 5px 5px;
-}
-
-.bw100 {
-	width: calc(100% - 10px);
-	margin: 5px 5px;
-}
-
-/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
 @media (max-width: 1023px) {
-	.bw16 {
-		width: calc(25% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw10 {
+		width: calc(25% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw17 {
-		width: calc(25% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw20 {
+		width: calc(50% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw20 {
-		width: calc(50% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw25 {
+		width: calc(50% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw25 {
-		width: calc(50% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw30 {
+		width: calc(50% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw50 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw33.333 {
-		width: calc(50% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw66 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw67 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw75 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw100 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw40 {
+		width: calc(50% - 6px*2);
+		margin: 6px 6px;
 	}
 }
 
-/*Generate query for mobile - all sizes take up the full screen width.*/
 @media (max-width: 720px) {
-	.bw16 {
-		width: calc(50% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw10 {
+		width: calc(50% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw17 {
-		width: calc(50% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw20 {
+		width: calc(100% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw20 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw25 {
+		width: calc(100% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw25 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw30 {
+		width: calc(100% - 6px*2);
+		margin: 6px 6px;
 	}
-	.bw50 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw33 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw66 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw67 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw75 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
-	}
-	.bw100 {
-		width: calc(100% - 5px*2);
-		margin: 5px 5px;
+	.bwWrap .bw40 {
+		width: calc(100% - 6px*2);
+		margin: 6px 6px;
 	}
 }
 
+/*----------Base Theming------------*/
 body {
 	margin: 0;
 	padding: 0;
@@ -304,4 +239,33 @@ body {
 	display: inline-block;
 	background: #FFF;
 	height: 250px;
+}
+
+.filterWrap {
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	margin-bottom: 1rem;
+}
+
+.filterWrap div[data-filter] {
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-family: Rockwell, Georgia, serif;
+	margin: 0;
+	color: #000;
+	display: flex;
+	display: -webkit-flex;
+	flex: 1;
+	-webkit-flex: 1;
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	justify-content: center;
+	-webkit-justify-content: center;
+	outline: 3px solid #000;
+	height: 60px;
+	background: #cecbcb;
+	cursor: pointer;
 }

@@ -1,124 +1,44 @@
-/*----------Globals------------*/
-@font-face
-	font-family: Rockwell
-	src: url(fonts/RockwellStd-ExtraBold.woff)
-
-$brandColor1: #FFF
-$brandColor2: #000
-$tablet: 1023px
-$smartphone: 720px
-
-=mainFont($size)
-	font-size: $size
-	text-transform: uppercase
-	font-family: Rockwell, Georgia, serif
-	margin: 0
-
-h1,h2,h3,h4,h5
-	line-height: 1em
-p
-	line-height: 1.5em
-
-/*----------Navigation------------*/
-
-
-/*----------Header------------*/
-header
-	width: 100%
-	position: relative
-	float: left
-	color: #FFF
-	background: #2b2b2b
-	.scaler
-		display: table
-		height: 80vh
-	.centerer
-		display: table-cell
-		vertical-align: middle
-	.textWrap
-		font-size: 1rem
-		text-align: left
-		max-width: 500px
-		width: 95%
-		h1
-			+mainFont(2rem)
-		p
-			margin: 1rem 0
-		@media (max-width: $smartphone)
-			text-align: center
-			margin: 0 auto
-
-/*----------Buttons------------*/
-.cta
-	border: 0
-	outline: 0
-	text-decoration: none
-	padding: 1rem 2rem
-	background: $brandColor2
-	color: $brandColor1
-	display: inline-block
-	text-transform: uppercase
-	transition: background 0.3s ease-out, color 0.3s ease-out
-
-	&:hover
-		background: $brandColor1
-		color: $brandColor2
-
-/*----------Grid------------*/
-/*Define your sizes and margin here*/
-$sizes: (16) (17) (20) (25) (50) (33.333) (66.666) (67) (75) (100)
-
-/*Margin between items, should be under half of your smallest size*/
-$marginX: 5px
-$marginY: 5px
-
-/*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
-.bwWrap
-	display: table
-	width: calc(100% + #{$marginX}*2)
-	margin: #{$marginY} 0 #{$marginY} #{-$marginX}
-
-/*Standard sizes for breakpoints*/
-=fullWidth()
-	width: calc(100% - #{$marginX}*2)
-	margin: #{$marginY} #{$marginX}
-
-=halfWidth()
-	width: calc(50% - #{$marginX}*2)
-	margin: #{$marginY} #{$marginX}
-
-=quarterWidth()
-	width: calc(25% - #{$marginX}*2)
-	margin: #{$marginY} #{$marginX}
+/*----------Generates a Grid------------*/
 
 /*Generates all width assignments*/
-@each $size, $i in $sizes
-	$sizeSelector: floor($size)
-	.bw#{$sizeSelector}
-		width: calc(#{$size}% - #{$marginX*2})
-		margin: #{$marginY} #{$marginX}
+=buildGrid($sizes, $marginX, $marginY:$marginX)
+	/*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
+	display: table
+	width: calc(100% + #{$marginX}*2)
+	margin-left: #{-$marginX}
 
-/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
-@media (max-width:$tablet)
 	@each $size, $i in $sizes
 		$sizeSelector: floor($size)
-		@if($sizeSelector < 20)
-			.bw#{$sizeSelector}
-				+quarterWidth
-		@else if($sizeSelector < 50)
-			.bw#{$size}
-				+halfWidth
-		@else
-			.bw#{$sizeSelector}
-				+fullWidth
+		.bw#{$sizeSelector}
+			width: calc(#{$size}% - #{$marginX*2})
+			margin: #{$marginY} #{$marginX}
 
-/*Generate query for mobile - all sizes take up the full screen width.*/
-@media (max-width:$smartphone)
-	@each $size, $i in $sizes
-		$sizeSelector: floor($size)
-		@if($size < 20)
-			.bw#{$sizeSelector}
-				+halfWidth
-		@else
-			.bw#{$sizeSelector}
-				+fullWidth
+	/*Generate query for tablet - any size under 50%, becomes 50%. Any size at or above 50% becomes 100%.*/
+	@media (max-width:$tablet)
+		@each $size, $i in $sizes
+			$sizeSelector: floor($size)
+			@if($sizeSelector < 20)
+				.bw#{$sizeSelector}
+					width: calc(25% - #{$marginX}*2)
+					margin: #{$marginY} #{$marginX}
+			@else if($sizeSelector < 50)
+				.bw#{$size}
+					width: calc(50% - #{$marginX}*2)
+					margin: #{$marginY} #{$marginX}
+			@else
+				.bw#{$sizeSelector}
+					width: calc(100% - #{$marginX}*2)
+					margin: #{$marginY} #{$marginX}
+
+	/*Generate query for mobile - all sizes take up the full screen width.*/
+	@media (max-width:$smartphone)
+		@each $size, $i in $sizes
+			$sizeSelector: floor($size)
+			@if($size < 20)
+				.bw#{$sizeSelector}
+					width: calc(50% - #{$marginX}*2)
+					margin: #{$marginY} #{$marginX}
+			@else
+				.bw#{$sizeSelector}
+					width: calc(100% - #{$marginX}*2)
+					margin: #{$marginY} #{$marginX}
