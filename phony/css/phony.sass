@@ -1,20 +1,10 @@
 //Raised phone layers
-$rotateX: 45
-$rotateY: 2
-$rotateZ: 27
-$rotateDeg: 73.5deg
-=rotateLayer
-  transform: rotate3d($rotateX, $rotateY, $rotateZ, $rotateDeg) scale3d(1.3, 2.3, 1) translate3d(0, 0, 0)
-  -webkit-transform: rotate3d(45, 2, 27, 73.5deg) scale3d(1.3, 2.3, 1) translate3d(0, 0, 0)
-  transform-style: preserve-3d
-  -webkit-transform-style: preserve-3d
+$layerCount: 4
+=rotateLayer($rotateX, $rotateY, $rotateZ, $rotateDeg, $scaleX, $scaleY, $translateX, $translateY:$translateX)
+  transform: rotate3d($rotateX, $rotateY, $rotateZ, $rotateDeg) scale($scaleX, $scaleY) translate3d($translateX, $translateY, 0)
+  -webkit-transform: rotate3d($rotateX, $rotateY, $rotateZ, $rotateDeg) scale($scaleX, $scaleY) translate3d($translateX, $translateY, 0)
   transform-origin: top left
   -webkit-transform-origin: top left
-
-$phoneWidth: 28%
-$phoneHeight: $phoneWidth*1.777
-$layerCount: 4
-
 
 .phoneLayers
   position: relative
@@ -26,6 +16,8 @@ $layerCount: 4
     width: 100%
     height: 100%
     top: 7%
+  .basePhone
+    width: 100%
   img
     -webkit-user-select: none
     -moz-user-select: none
@@ -33,27 +25,19 @@ $layerCount: 4
     user-select: none
   .layer
     position: absolute
-    width: $phoneWidth
-    height: $phoneHeight
-    overflow: hidden
+    width: 28%
     left: 65%
-    z-index: 1
+    overflow: hidden
     opacity: 0
-    +rotateLayer
-    transition: opacity 0.3s ease-out, margin-top 0.3s ease-out, transform 0.3s ease-out, left 0.3s ease-out, margin-left 0.3s ease-out
-    backface-visibility: hidden
-    -webkit-backface-visibility: hidden
+    +rotateLayer(45,2,27,73.5deg,1.3,2.3,0)
+    transition: opacity 0.3s ease-out, margin-top 0.3s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out, left 0.3s ease-out, margin-left 0.3s ease-out
     img
       width: 100%
       height: auto
       backface-visibility: hidden
       -webkit-backface-visibility: hidden
       transform: translateZ(0)
-    iframe
-      width: 100%
-      height: 100%
-      border: 0
-    @for $i from 1 through 4
+    @for $i from 1 through $layerCount
       &:nth-child(#{$i})
         background-color: unquote('##{$i + 1}#{$i + 1}#{$i + 1}')
         transition-delay: unquote('#{($i)/5}s')
@@ -63,22 +47,30 @@ $layerCount: 4
 
 .popOut
   .layer
-    @for $i from 1 through 4
+    @for $i from 1 through $layerCount
       &:nth-child(#{$i})
         opacity: 1
         margin-top: -($i)*4%
-  .basePhone
-    width: 100%
 
 .noDelay
   .layer
+    transition: top 0.3s ease-out, margin-top 0.3s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out, left 0.3s ease-out, margin-left 0.3s ease-out
     transition-delay: 0s!important
     &:not(.active):hover
-      transform: rotate3d($rotateX, $rotateY, $rotateZ, $rotateDeg) scaleX(1.33, 2.35, 1) translate3d(-2.5%, -2.5%, 0)
-      -webkit-transform: rotate3d(45, 2, 27, 73.5deg) scale3d(1.33, 2.35, 1) translate3d(-2.5%, -2.5%, 0)
+      +rotateLayer(45,2,27,73.5deg,1.33,2.35,-2.5%,-2.5%)
     &.active
-      transform: scale3d(2, 2, 1) translate3d(-50%, -2.5%, 0)
-      -webkit-transform: scale3d(2, 2, 1) translate3d(-50%, -2.5%, 0)
+      transform: scale(2, 2) translate(-50%, -2.5%)
+      -webkit-transform: scale(2, 2) translate(-50%, -2.5%)
       left: 50%
+      top: 0
       margin-top: -19%
-      z-index: 5
+      z-index: $layerCount+1
+
+.homeBtn
+  position: absolute
+  width: 8%
+  padding-bottom: 8%
+  cursor: pointer
+  z-index: $layerCount
+  left: 17%
+  bottom: 26%
