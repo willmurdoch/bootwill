@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('.phoneLayers').addClass('popOut');
   setTimeout(function(){
     $('.phoneLayers').addClass('noDelay');
-  })
+  },300)
 })
 $('.layer').click(function(){
   if(!$(this).hasClass('active')){

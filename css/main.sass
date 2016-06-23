@@ -25,19 +25,35 @@ p
 /*----------Navigation------------*/
 //Choose how many items you want to float left before the nav splits
 $navSplit: 4
+$logoSize: 50px
+$navPadding: 1rem
 nav
 	position: fixed
 	width: 100%
 	top: 0
 	z-index: 2
 	background: #000
+	.mobileBtn
+		position: absolute
+		top: $navPadding
+		display: none
+		right: 0
+		z-index: 3
+		width: 50px
+		height: 50px
+		font-size: 2rem
+		color: #FFF
+		cursor: pointer
+		font-weight: 900
 	.scaler
 		padding: 0
 		font-size: 1rem
 		text-align: right
+		position: relative
 	ul
 		list-style-type: none
-		padding: 0
+		padding: $navPadding 0
+		margin: 0
 		display: inline-block
 		vertical-align: middle
 		width: 100%
@@ -58,19 +74,32 @@ nav
 			color: #FFF
 			text-decoration: none
 			margin: 0 1rem
-			line-height: 3em
+			line-height: 3rem
 
 			img
 				display: block
 	//Mobile nav
 	@media (max-width: $mobile)
-		ul
-			li
-				display: block
-				width: 100%
-				text-align: left
-				a
-					margin: 0
+		height: calc(#{$logoSize} + #{$navPadding*2})
+		overflow: hidden
+		transition: height 0.4s ease-out
+		&.expanded
+			height: 100vh
+			overflow: auto
+		.mobileBtn
+			display: block
+		.scaler
+			ul
+				li
+					display: block
+					width: 100%
+					text-align: left
+					float: none
+					margin: $navPadding 0
+					&:first-child
+						margin: 0
+					a
+						margin: 0
 
 
 
@@ -81,6 +110,8 @@ header
 	float: left
 	color: #FFF
 	background: #2b2b2b
+	@media (max-width: $mobile)
+		padding-top: $logoSize
 
 	.scaler
 		display: table
