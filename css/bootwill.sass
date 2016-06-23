@@ -1,6 +1,3 @@
-/*----------Generates a Grid------------*/
-
-/*Generates all width assignments*/
 =buildGrid($sizes, $marginX, $marginY:$marginX)
 	/*Wrapper to keep elements flush with intended edge and balance top/bottom margin*/
 	display: table
@@ -9,7 +6,7 @@
 
 	@each $size, $i in $sizes
 		$sizeSelector: floor($size)
-		.bw#{$sizeSelector}
+		.w#{$sizeSelector}
 			width: calc(#{$size}% - #{$marginX*2})
 			margin: #{$marginY} #{$marginX}
 
@@ -18,27 +15,27 @@
 		@each $size, $i in $sizes
 			$sizeSelector: floor($size)
 			@if($sizeSelector < 20)
-				.bw#{$sizeSelector}
+				.w#{$sizeSelector}
 					width: calc(25% - #{$marginX}*2)
 					margin: #{$marginY} #{$marginX}
 			@else if($sizeSelector < 50)
-				.bw#{$size}
+				.w#{$size}
 					width: calc(50% - #{$marginX}*2)
 					margin: #{$marginY} #{$marginX}
 			@else
-				.bw#{$sizeSelector}
+				.w#{$sizeSelector}
 					width: calc(100% - #{$marginX}*2)
 					margin: #{$marginY} #{$marginX}
 
 	/*Generate query for mobile - all sizes take up the full screen width.*/
-	@media (max-width:$smartphone)
+	@media (max-width:$mobile)
 		@each $size, $i in $sizes
 			$sizeSelector: floor($size)
 			@if($size < 20)
-				.bw#{$sizeSelector}
+				.w#{$sizeSelector}
 					width: calc(50% - #{$marginX}*2)
 					margin: #{$marginY} #{$marginX}
 			@else
-				.bw#{$sizeSelector}
+				.w#{$sizeSelector}
 					width: calc(100% - #{$marginX}*2)
 					margin: #{$marginY} #{$marginX}
