@@ -1,15 +1,12 @@
 //Base stylesheet
-@import bootwill.sass
+@import grids.sass
 
-/*----------Globals------------*/
-@font-face
-	font-family: Rockwell
-	src: url(fonts/RockwellStd-ExtraBold.woff)
-
+/*----------Config------------*/
 $brandColor1: #FFF
 $brandColor2: #000
 $tablet: 1023px
-$mobile: 720px
+$mobile: 800px
+$cap: 1200px
 
 =mainFont($size)
 	font-size: $size
@@ -17,188 +14,83 @@ $mobile: 720px
 	font-family: Rockwell, Georgia, serif
 	margin: 0
 
+/*----------Globals------------*/
+html
+	font-size: 18px
+body
+	margin: 0
+	overflow-y: scroll
 h1,h2,h3,h4,h5
 	line-height: 1em
 p
 	line-height: 1.5em
+.scaler
+	position: relative
+	margin: 0 auto
+	width: 95%
+	max-width: $cap
 
 /*----------Navigation------------*/
-//Choose how many items you want to float left before the nav splits
-$navSplit: 4
-$logoSize: 50px
-$navPadding: 1rem
-nav
-	position: fixed
-	width: 100%
+#mainNav
+	position: absolute
 	top: 0
-	z-index: 2
-	background: #000
-	.mobileBtn
-		position: absolute
-		top: $navPadding
-		display: none
-		right: 0
-		z-index: 3
-		width: 50px
-		height: 50px
-		font-size: 2rem
-		color: #FFF
-		cursor: pointer
-		font-weight: 900
+	left: 0
+	width: 100%
+	z-index: 5
 	.scaler
-		padding: 0
-		font-size: 1rem
-		text-align: right
-		position: relative
-	ul
-		list-style-type: none
-		padding: $navPadding 0
-		margin: 0
-		display: inline-block
-		vertical-align: middle
-		width: 100%
-		li
-			display: inline-block
-			vertical-align:middle
-			&:nth-child(-n + #{$navSplit})
-				float: left
-			&:first-of-type
-				a
-					margin-left: 0
-			&:last-of-type
-				a
-					margin-right: 0
-		a
-			display: inline-block
-			vertical-align: middle
-			color: #FFF
-			text-decoration: none
-			margin: 0 1rem
-			line-height: 3rem
-
-			img
-				display: block
-	//Mobile nav
-	@media (max-width: $mobile)
-		height: calc(#{$logoSize} + #{$navPadding*2})
-		overflow: hidden
-		transition: height 0.4s ease-out
-		&.expanded
-			height: 100vh
-			overflow: auto
-		.mobileBtn
-			display: block
-		.scaler
-			ul
-				li
-					display: block
-					width: 100%
-					text-align: left
-					float: none
-					margin: $navPadding 0
-					&:first-child
-						margin: 0
-					a
-						margin: 0
-
-
-
-/*----------Header------------*/
-header
-	width: 100%
-	position: relative
-	float: left
-	color: #FFF
-	background: #2b2b2b
-	@media (max-width: $mobile)
-		padding-top: $logoSize
-
-	.scaler
-		display: table
-		height: 80vh
-	.centerer
-		display: table-cell
-		vertical-align: middle
-	.textWrap
-		font-size: 1rem
-		text-align: left
-		max-width: 500px
-		width: 95%
-
-		h1
-			+mainFont(2rem)
-		p
-			margin: 1rem 0
-		@media (max-width: $mobile)
-			text-align: center
-			margin: 0 auto
-
-/*----------Buttons------------*/
-.cta
-	border: 0
-	outline: 0
-	text-decoration: none
-	padding: 1rem 2rem
-	background: $brandColor2
-	color: $brandColor1
-	display: inline-block
-	text-transform: uppercase
-	transition: background 0.3s ease-out, color 0.3s ease-out
-
-	&:hover
-		background: $brandColor1
-		color: $brandColor2
-
-/*----------Generate the Grid------------*/
-.bwWrap
-	+buildGrid((10) (20) (25) (30) (40), 6px)
-
-/*----------Base Theming------------*/
-body
-	margin: 0
-	padding: 0
-	text-align: center
-	background: #000
-	font-size: 14px
-	font-family: Georgia, serif
-.wrapper
-	display: block
-	margin: 0 auto
-	width: 100%
-.scaler
-	max-width: 1024px
-	width: 95%
-	margin: 0 auto
-	display: table
-	font-size: 0
-	padding: 3rem 0
-.tile
-	font-size: 1rem
-	display: inline-block
-	background: #FFF
-	height: 250px
-.filterWrap
-	width: 100%
-	display: flex
-	display: -webkit-flex
-	flex-flow: row wrap
-	-webkit-flex-flow: row wrap
-	margin-bottom: 1rem
-	div[data-filter]
-		+mainFont(1rem)
-		color: #000
 		display: flex
-		display: -webkit-flex
-		flex: 1
-		-webkit-flex: 1
-		flex-direction: column
-		-webkit-flex-direction: column
-		justify-content: center
-		-webkit-justify-content: center
-		outline: 3px solid #000
-		height: 60px
-		background: #cecbcb
-		cursor: pointer
-.grid
-	.scaler
-		overflow:hidden
+		align-items: center
+		padding: 5px 0
+		justify-content: space-between
+
+#logo
+	img
+		display: block
+
+.navBtns
+	display: flex
+	width: 100%
+	justify-content: space-around
+	@media (max-width: $mobile)
+		width: calc(105% + 2px)
+		left: calc(-2.5% - 1px)
+		position: absolute
+		background: $brandColor2
+		color: #FFF
+		display: block
+		height: 0
+		overflow: hidden
+		text-align: center
+		top: 100%
+		transition: height 0.5s ease-out
+		a
+			display: block
+			padding: 1rem 0
+			width: 100%
+
+#mobileBtn
+	display: none
+	position: absolute
+	right: 10px
+	cursor: pointer
+	div
+		width: 35px
+		height: 5px
+		background: red
+		margin: 6px 0
+		transition: all 0.3s ease-out
+		&:first-of-type
+			margin-top: 0
+		&:last-of-type
+			margin-bottom: 0
+	@media (max-width: $mobile)
+		display: inline-block
+		&.open
+			~ .navBtns
+				height: 100vh
+			div:first-child
+				transform: rotate(-45deg) translate(-9px, 6px)
+			div:nth-child(2)
+				transform: rotate(45deg)
+			div:last-child
+				transform: rotate(45deg) translate(-8px, -8px)
